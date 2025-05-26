@@ -2,7 +2,8 @@ import numpy as np
 import pandas as pd
 from sklearn import linear_model
 from sklearn.model_selection import train_test_split
-
+import sklearn.metrics as skm
+import math
 
 reg = linear_model.LinearRegression()
 
@@ -17,3 +18,7 @@ reg.fit(train_x, train_y)
 
 predict_y = reg.predict(test_x)
 
+print("R Square: ") 
+print(round(skm.r2_score(test_y, predict_y), 3))
+print("\nRoot MSE: ")
+print(round(skm.root_mean_squared_error(test_y, predict_y), 3))
